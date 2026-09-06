@@ -15,10 +15,9 @@ int main() {
         std::cin>>imagePath;
 
         ImageHandler image((imagePath.data()));
-        cv::Mat temp(image.getImage().rows, image.getImage().cols, CV_8UC1);
-
-        image.applyBinaryThreshold(temp, 128);
-        ImageHandler::displayImage("nigger", temp);
+        cv::Mat temp = image.applyBinaryThreshold(100);
+        ImageHandler::displayImage("Original Image (Grayscale)", image.getImage());
+        ImageHandler::displayImage("Binary threshold", temp);
     }
 
     return 0;

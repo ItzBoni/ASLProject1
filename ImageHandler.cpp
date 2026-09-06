@@ -10,7 +10,7 @@ ImageHandler::ImageHandler(char* fileName) {
 
 int ImageHandler::importImage(const char* fileName) {
     std::cout<<fileName<<std::endl;
-    this->image = cv::imread(fileName);
+    this->image = cv::imread(fileName, cv::IMREAD_GRAYSCALE);
 
     if (!this->image.data) {
         std::cout<<"Could not open or find the image"<<std::endl;
@@ -30,7 +30,8 @@ int* ImageHandler::frequencyData() {
     return values; // Safe to return
 }
 
-void ImageHandler::applyBinaryThreshold(cv::Mat outputImage, int p) {
+cv::Mat ImageHandler::applyBinaryThreshold(int p) {
+    cv::Mat outputImage = cv::Mat::zeros(this->image.size(), CV_8UC1);
     //Binary Threshold
     for (int j = 0; j < this->image.rows; j++) {
         for (int i = 0; i < this->image.cols; i++) {
@@ -41,11 +42,14 @@ void ImageHandler::applyBinaryThreshold(cv::Mat outputImage, int p) {
             }
         }
     }
+
+    return outputImage;
 }
 
 void ImageHandler::displayImage(const char* fileName, cv::Mat image) {
     cv::namedWindow(fileName, cv::WINDOW_NORMAL);
     cv::imshow(fileName, image);
+    cv::waitKey(0);
 }
 
 cv::Mat ImageHandler::getImage() {
