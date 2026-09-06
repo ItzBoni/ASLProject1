@@ -46,7 +46,7 @@ cv::Mat ImageHandler::applyBinaryThreshold(int p) {
     return outputImage;
 }
 
-void ImageHandler::displayImage(const char* fileName, cv::Mat image) {
+void ImageHandler::displayImage(const char* fileName, const cv::Mat& image) {
     cv::namedWindow(fileName, cv::WINDOW_NORMAL);
     cv::imshow(fileName, image);
     cv::waitKey(0);
