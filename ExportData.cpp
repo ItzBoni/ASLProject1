@@ -6,7 +6,7 @@
 #include "ExportData.h"
 using namespace std;
 
-static int exportToCSV(const int* exportContent,  const char* fileName, const char* exportName,const int arraySize = 256) {
+int ExportData::exportToCSV(const int* exportContent,  const char* fileName, const char* exportName,const int arraySize = 256) {
     ofstream histogram("histogram.csv");
 
     if (!histogram.is_open()) {

@@ -8,7 +8,7 @@
 
 class ExportData {
 public:
-    static int exportToCSV(int* exportContent, char* fileName, char* exportPath, int arraySize);
+    static int exportToCSV(const int *exportContent, const char *fileName, const char *exportName, int arraySize);
 };
 
 

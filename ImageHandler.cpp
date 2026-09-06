@@ -9,6 +9,7 @@ ImageHandler::ImageHandler(char* fileName) {
 }
 
 int ImageHandler::importImage(const char* fileName) {
+    std::cout<<fileName<<std::endl;
     this->image = cv::imread(fileName);
 
     if (!this->image.data) {
@@ -20,14 +21,13 @@ int ImageHandler::importImage(const char* fileName) {
 }
 
 int* ImageHandler::frequencyData() {
-    int  values[256] = {0};
-    for (int i = 0; i < this -> image.rows; i++) {
-        for (int j = 0; j < this -> image.cols; j++) {
-             values[this -> image.at<uchar>(i, j)]++;
+    int* values = new int[256]{0}; // Allocated on the heap
+    for (int i = 0; i < this->image.rows; i++) {
+        for (int j = 0; j < this->image.cols; j++) {
+            values[this->image.at<uchar>(i, j)]++;
         }
     }
-
-    return  values;
+    return values; // Safe to return
 }
 
 void ImageHandler::applyBinaryThreshold(cv::Mat outputImage, int p) {
@@ -41,4 +41,13 @@ void ImageHandler::applyBinaryThreshold(cv::Mat outputImage, int p) {
             }
         }
     }
+}
+
+void ImageHandler::displayImage(const char* fileName, cv::Mat image) {
+    cv::namedWindow(fileName, cv::WINDOW_NORMAL);
+    cv::imshow(fileName, image);
+}
+
+cv::Mat ImageHandler::getImage() {
+    return this->image;
 }

@@ -11,9 +11,11 @@ class ImageHandler {
         cv::Mat image;
     public:
         ImageHandler(char* fileName);
+        cv::Mat getImage();
         int importImage(const char* fileName);
         int* frequencyData();
         void applyBinaryThreshold(cv::Mat image, int p);
+        static void displayImage(const char* fileName, cv::Mat image);
 };
 
 
