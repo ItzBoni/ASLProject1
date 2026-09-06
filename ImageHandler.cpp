@@ -35,9 +35,9 @@ void ImageHandler::applyBinaryThreshold(cv::Mat outputImage, int p) {
     for (int j = 0; j < this->image.rows; j++) {
         for (int i = 0; i < this->image.cols; i++) {
             if (this->image.at<uchar>(j, i) > p) {
-                A.at<uchar>(j, i) = 255;
+                outputImage.at<uchar>(j, i) = 255;
             } else {
-                A.at<uchar>(j, i) = 0 ;
+                outputImage.at<uchar>(j, i) = 0 ;
             }
         }
     }
