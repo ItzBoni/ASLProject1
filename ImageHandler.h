@@ -5,6 +5,7 @@
 #ifndef ASLPROJECT1_IMAGEHANDLER_H
 #define ASLPROJECT1_IMAGEHANDLER_H
 #include <opencv2/opencv.hpp>
+#include <vector>
 
 class ImageHandler {
     private:
@@ -13,7 +14,7 @@ class ImageHandler {
         ImageHandler(char* fileName);
         cv::Mat getImage();
         int importImage(const char* fileName);
-        int* frequencyData();
+        std::vector<int> frequencyData();
         cv::Mat applyBinaryThreshold(int p);
         static void displayImage(const char* fileName, const cv::Mat& image);
 };

@@ -20,14 +20,14 @@ int ImageHandler::importImage(const char* fileName) {
     return 0;
 }
 
-int* ImageHandler::frequencyData() {
-    int* values = new int[256]{0}; // Allocated on the heap
+std::vector<int> ImageHandler::frequencyData() {
+    std::vector<int> values(256, 0);
     for (int i = 0; i < this->image.rows; i++) {
         for (int j = 0; j < this->image.cols; j++) {
             values[this->image.at<uchar>(i, j)]++;
         }
     }
-    return values; // Safe to return
+    return values;
 }
 
 cv::Mat ImageHandler::applyBinaryThreshold(int p) {

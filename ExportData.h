@@ -4,11 +4,13 @@
 #pragma once
 #ifndef ASLPROJECT1_EXPORT_H
 #define ASLPROJECT1_EXPORT_H
+#include <string>
+#include <vector>
 
 
 class ExportData {
 public:
-    static int exportToCSV(const int *exportContent, const char *fileName, const char *exportName, int arraySize);
+    static int exportToCSV(const std::vector<int>& exportContent, const std::string& fileName);
 };
 
 
